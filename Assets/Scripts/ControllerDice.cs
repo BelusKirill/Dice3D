@@ -1,22 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System.Threading.Tasks;
 
 public class ControllerDice : MonoBehaviour
 {
     public float rotationSpeed = 0f; // Скорость поворота
     public Transform[] dices;
-    
     public bool[] isRunDices;
+    public int[] results;
+
+    public TopPanel topPanel;
 
     private void Start() {
         isRunDices = new bool[dices.Length];
+        results = new int[dices.Length];
 
         for (int i = 0; i < isRunDices.Length; i++)
         {
             isRunDices[i] = false;
         }
+
+        ResetResult();
     }
+
 
     public void Spinning()
     {
@@ -24,11 +32,14 @@ public class ControllerDice : MonoBehaviour
         {
             if (isRunDices[i] == true) return;
         }
-
+        
+        topPanel.AnimClose();
         for (int i = 0; i < dices.Length; i++)
         {
             RandomParamSpinning(dices[i], i);
         }
+
+        StartCoroutine(CheckResults());
     }
 
     private void RandomParamSpinning(Transform dice, int index)
@@ -83,13 +94,31 @@ public class ControllerDice : MonoBehaviour
                     break;
                 }
                 if (i != coutSipn-1)
-                    dice.rotation = Quaternion.Slerp(dice.rotation, targetAngles, 0.01f * rotationSpeed); //Time.deltaTime * rotationSpeed
+                    dice.rotation = Quaternion.Slerp(dice.rotation, targetAngles, Time.deltaTime * 2 * rotationSpeed); //Time.deltaTime * rotationSpeed
                 else
-                    dice.rotation = Quaternion.Slerp(dice.rotation, targetAngles, Time.deltaTime * 2 * rotationSpeed);
+                    dice.rotation = Quaternion.Slerp(dice.rotation, targetAngles, Time.deltaTime * rotationSpeed);
                 yield return null;
             }
         }
+
         isRunDices[index] = false;
+        results[index] = result;
+    }
+
+    IEnumerator CheckResults()
+    {
+        Debug.Log(results.All(element => element > 0));
+        while(true)
+        {
+            if(results.All(element => element > 0))
+                break;
+            yield return null;
+        }
+
+        Debug.Log(results.All(element => element > 0));
+        topPanel.AnimOpen();
+        topPanel.SetResult(results.Sum());
+        ResetResult();
     }
 
     private Vector3 DeterminingAngleD6(int result)
@@ -125,5 +154,13 @@ public class ControllerDice : MonoBehaviour
     private bool EqualAngleTo(Quaternion value1, Quaternion value2, float epsilon)
     {
         return Quaternion.Angle(value1, value2) < epsilon;
+    }
+
+    private void ResetResult()
+    {
+        for (int i = 0; i < results.Length; i++)
+        {
+            results[i] = 0;
+        }
     }
 }
