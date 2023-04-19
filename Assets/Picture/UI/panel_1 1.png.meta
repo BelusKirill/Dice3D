@@ -132,11 +132,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 587
+        y: 586
         width: 720
         height: 133
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 88, y: 56, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -157,7 +157,7 @@ TextureImporter:
         width: 720
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 90, z: 0, w: 94}
       outline: []
       physicsShape: []
@@ -165,6 +165,27 @@ TextureImporter:
       bones: []
       spriteID: 38ca5d4cc8507dc4aa41256a01639bd0
       internalID: -1970098351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panel_1 1_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 438
+        width: 720
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 88, y: 56, z: 88, w: 56}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f51eb62bc16f5464ab44644fb9a5a8da
+      internalID: 1505050366
       vertices: []
       indices: 
       edges: []
@@ -180,6 +201,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      panel_1 1_2: 1505050366
       panel_1 1_0: 2075252963
       panel_1 1_1: -1970098351
   spritePackingTag: 
