@@ -7,36 +7,62 @@ using System.Threading.Tasks;
 public class ControllerDice : MonoBehaviour
 {
     public float rotationSpeed = 0f; // Скорость поворота
-    public Transform[] dices;
+    public List<Dice> dices;
     public bool[] isRunDices;
     public int[] results;
 
     public TopPanel topPanel;
 
     private void Start() {
-        isRunDices = new bool[dices.Length];
-        results = new int[dices.Length];
-
-        for (int i = 0; i < isRunDices.Length; i++)
+        if (dices == null || dices.Count == 0)
         {
-            isRunDices[i] = false;
+            dices = new List<Dice>();
+            return;            
         }
 
-        ResetResult();
+        ResetParam();
     }
 
+    public void AddDice(Dice dice)
+    {
+        dices.Add(dice);
+        ResetParam();
+    }
 
-    public void Spinning()
+    public void DelDice(string typeD)
+    {
+        foreach (Dice dice in dices)
+        {
+            if (dice.type == typeD)
+            {
+                dices.Remove(dice);
+                Destroy(dice.transform.gameObject);
+                ResetParam();
+                return;
+            }
+        }
+    }
+
+    public bool IsRunSping()
     {
         for (int i = 0; i < isRunDices.Length; i++)
         {
-            if (isRunDices[i] == true) return;
+            if (isRunDices[i] == true) return true;
         }
+        return false;
+    }
+
+    public void Spinning()
+    {
+        if (dices.Count == 0)
+            return;
+
+        if (IsRunSping()) return;
         
         topPanel.AnimClose();
-        for (int i = 0; i < dices.Length; i++)
+        for (int i = 0; i < dices.Count; i++)
         {
-            RandomParamSpinning(dices[i], i);
+            RandomParamSpinning(dices[i].transform, i);
         }
 
         StartCoroutine(CheckResults());
@@ -162,5 +188,128 @@ public class ControllerDice : MonoBehaviour
         {
             results[i] = 0;
         }
+    }
+
+    private void PositionDetection()
+    {
+        switch (dices.Count)
+        {
+            case 1:
+                dices[0].transform.position = new Vector3(0,0,0);
+                break;  
+            case 2:
+                dices[0].transform.position = new Vector3(1,0,0);
+                dices[1].transform.position = new Vector3(-1,0,0);
+                break; 
+            case 3:
+                dices[0].transform.position = new Vector3(2,0,0);
+                dices[1].transform.position = new Vector3(0,0,0);
+                dices[2].transform.position = new Vector3(-2,0,0);
+                break; 
+            case 4:
+                dices[0].transform.position = new Vector3(1,-1,0);
+                dices[1].transform.position = new Vector3(-1,-1,0);
+                dices[2].transform.position = new Vector3(1,1,0);
+                dices[3].transform.position = new Vector3(-1,1,0);
+                break; 
+            case 5:
+                dices[0].transform.position = new Vector3(1,-1,0);
+                dices[1].transform.position = new Vector3(-1,-1,0);
+                dices[2].transform.position = new Vector3(2,1,0);
+                dices[3].transform.position = new Vector3(-2,1,0);
+                dices[4].transform.position = new Vector3(0,1,0);
+                break;    
+            case 6:
+                dices[0].transform.position = new Vector3(2,-1,0);
+                dices[1].transform.position = new Vector3(-2,-1,0);
+                dices[2].transform.position = new Vector3(2,1,0);
+                dices[3].transform.position = new Vector3(-2,1,0);
+                dices[4].transform.position = new Vector3(0,1,0);
+                dices[5].transform.position = new Vector3(0,-1,0);
+                break;   
+            case 7:
+                dices[0].transform.position = new Vector3(2,-1,0);
+                dices[1].transform.position = new Vector3(-2,-1,0);
+                dices[2].transform.position = new Vector3(2,1,0);
+                dices[3].transform.position = new Vector3(-2,1,0);
+                dices[4].transform.position = new Vector3(0,2,0);
+                dices[5].transform.position = new Vector3(0,-2,0);
+                dices[6].transform.position = new Vector3(0,0,0);
+                break;  
+            case 8:
+                dices[0].transform.position = new Vector3(2,-2,0);
+                dices[1].transform.position = new Vector3(-2,-2,0);
+                dices[2].transform.position = new Vector3(2,2,0);
+                dices[3].transform.position = new Vector3(-2,2,0);
+                dices[4].transform.position = new Vector3(0,2,0);
+                dices[5].transform.position = new Vector3(0,-2,0);
+                dices[6].transform.position = new Vector3(1,0,0);
+                dices[7].transform.position = new Vector3(-1,0,0);
+                break;  
+            case 9:
+                dices[0].transform.position = new Vector3(2,-2,0);
+                dices[1].transform.position = new Vector3(-2,-2,0);
+                dices[2].transform.position = new Vector3(2,2,0);
+                dices[3].transform.position = new Vector3(-2,2,0);
+                dices[4].transform.position = new Vector3(0,2,0);
+                dices[5].transform.position = new Vector3(0,-2,0);
+                dices[6].transform.position = new Vector3(2,0,0);
+                dices[7].transform.position = new Vector3(-2,0,0);
+                dices[8].transform.position = new Vector3(0,0,0);
+                break;  
+            case 10:
+                dices[0].transform.position = new Vector3(2,-2,0);
+                dices[1].transform.position = new Vector3(-2,-2,0);
+                dices[2].transform.position = new Vector3(2,3,0);
+                dices[3].transform.position = new Vector3(-2,3,0);
+                dices[4].transform.position = new Vector3(0,3,0);
+                dices[5].transform.position = new Vector3(0,-2,0);
+                dices[6].transform.position = new Vector3(2,0.5f,0);
+                dices[7].transform.position = new Vector3(-2,0.5f,0);
+                dices[8].transform.position = new Vector3(0,1.35f,0);
+                dices[9].transform.position = new Vector3(0,-0.3f,0);
+                break;  
+            case 11:
+                dices[0].transform.position = new Vector3(2,-2,0);
+                dices[1].transform.position = new Vector3(-2,-2,0);
+                dices[2].transform.position = new Vector3(2,3,0);
+                dices[3].transform.position = new Vector3(-2,3,0);
+                dices[4].transform.position = new Vector3(0,3,0);
+                dices[5].transform.position = new Vector3(0,-2,0);
+                dices[6].transform.position = new Vector3(2,1.35f,0);
+                dices[7].transform.position = new Vector3(-2,0.5f,0);
+                dices[8].transform.position = new Vector3(0,1.35f,0);
+                dices[9].transform.position = new Vector3(0,-0.3f,0);
+                dices[10].transform.position = new Vector3(2,-0.3f,0);
+                break;  
+            case 12:
+                dices[0].transform.position = new Vector3(2,-2,0);
+                dices[1].transform.position = new Vector3(-2,-2,0);
+                dices[2].transform.position = new Vector3(2,3,0);
+                dices[3].transform.position = new Vector3(-2,3,0);
+                dices[4].transform.position = new Vector3(0,3,0);
+                dices[5].transform.position = new Vector3(0,-2,0);
+                dices[6].transform.position = new Vector3(2,1.35f,0);
+                dices[7].transform.position = new Vector3(-2,1.35f,0);
+                dices[8].transform.position = new Vector3(0,1.35f,0);
+                dices[9].transform.position = new Vector3(0,-0.3f,0);
+                dices[10].transform.position = new Vector3(2,-0.3f,0);
+                dices[11].transform.position = new Vector3(-2,-0.3f,0);
+                break;  
+        }
+    }
+
+    private void ResetParam()
+    {
+        isRunDices = new bool[dices.Count];
+        results = new int[dices.Count];
+
+        for (int i = 0; i < isRunDices.Length; i++)
+        {
+            isRunDices[i] = false;
+        }
+
+        ResetResult();
+        PositionDetection();
     }
 }
