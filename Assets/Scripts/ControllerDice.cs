@@ -43,6 +43,16 @@ public class ControllerDice : MonoBehaviour
         }
     }
 
+    public void ClearDices()
+    {
+        foreach (Dice dice in dices)
+        {
+            Destroy(dice.transform.gameObject);
+        }
+        dices = new List<Dice>();
+        ResetParam();
+    }
+
     public bool IsRunSping()
     {
         for (int i = 0; i < isRunDices.Length; i++)
@@ -70,7 +80,7 @@ public class ControllerDice : MonoBehaviour
 
     private void RandomParamSpinning(Transform dice, int index)
     {
-        int coutSipn = Random.Range(4, 8);
+        int coutSipn = Random.Range(4, 9);
         int result = Random.Range(1, 7);
         Debug.Log(result);
 
@@ -143,7 +153,9 @@ public class ControllerDice : MonoBehaviour
 
         Debug.Log(results.All(element => element > 0));
         topPanel.AnimOpen();
-        topPanel.SetResult(results.Sum());
+
+        string strResult = string.Join("\\", results) + " (" + results.Sum() +")";
+        topPanel.SetResult(strResult);
         ResetResult();
     }
 

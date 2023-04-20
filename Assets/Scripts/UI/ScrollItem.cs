@@ -11,33 +11,11 @@ public class ScrollItem : MonoBehaviour
     public GameObject controllerDice;
     public TextMeshProUGUI txtCountDices;
     public int countDices;
-    public Button leftBtn;
-    public Button rightBtn;
 
     private void Start() 
     {
         countDices = 0;
         txtCountDices.text = countDices.ToString();
-        StartCoroutine(InteractableButtons());
-    }
-
-    IEnumerator InteractableButtons()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(0.3f);  
-
-            if (controllerDice.GetComponent<ControllerDice>().IsRunSping() && controllerDice.GetComponent<ControllerDice>().dices.Count != 0)
-            {
-                leftBtn.interactable = false;
-                rightBtn.interactable = false;
-            }
-            else
-            {
-                leftBtn.interactable = true;
-                rightBtn.interactable = true;
-            }    
-        }
     }
 
     public void AddDice()
@@ -63,5 +41,11 @@ public class ScrollItem : MonoBehaviour
             controllerDice.GetComponent<ControllerDice>().DelDice(diceType);
             txtCountDices.text = countDices.ToString();
         }
+    }
+
+    public void ClearDices()
+    {
+        countDices = 0;
+        txtCountDices.text = countDices.ToString();
     }
 }
