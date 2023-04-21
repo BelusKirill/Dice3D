@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 using System.Threading.Tasks;
 
 public class ControllerDice : MonoBehaviour
 {
     public float rotationSpeed = 0f; // Скорость поворота
+    public bool isAnim = true;
     public List<Dice> dices;
     public bool[] isRunDices;
     public int[] results;
@@ -53,6 +55,16 @@ public class ControllerDice : MonoBehaviour
         ResetParam();
     }
 
+    public void ChangeSpeedSpin(Slider slider)
+    {
+        rotationSpeed = slider.value;
+    }
+
+    public void ChangeAnimSpin(Toggle toggle)
+    {
+        isAnim = toggle.isOn;
+    }
+
     public bool IsRunSping()
     {
         for (int i = 0; i < isRunDices.Length; i++)
@@ -69,10 +81,18 @@ public class ControllerDice : MonoBehaviour
 
         if (IsRunSping()) return;
         
-        topPanel.AnimClose();
+        if (isAnim)
+            topPanel.AnimClose();
         for (int i = 0; i < dices.Count; i++)
         {
-            RandomParamSpinning(dices[i].transform, i);
+            if (isAnim)
+            {
+                RandomParamSpinning(dices[i].transform, i);
+            }
+            else
+            {
+                NoAnimSpin(dices[i].transform, i);
+            }
         }
 
         StartCoroutine(CheckResults());
@@ -141,6 +161,31 @@ public class ControllerDice : MonoBehaviour
         results[index] = result;
     }
 
+    private void NoAnimSpin(Transform dice, int index)
+    {
+        //isRunDices[index] = true;
+        int result = Random.Range(1, 7);
+
+        Vector3 vector3 = DeterminingAngleD6(result);
+
+        float targetAngleX = vector3.x;
+        float targetAngleY = vector3.y;
+        float targetAngleZ = vector3.z;
+
+        Quaternion targetAngles = Quaternion.Euler(targetAngleX, targetAngleY, targetAngleZ);
+
+        if (targetAngleX < 0)
+            targetAngleX += 360; 
+        if (targetAngleY < 0)
+            targetAngleY += 360; 
+        if (targetAngleZ < 0)
+            targetAngleZ += 360; 
+        dice.eulerAngles = new Vector3(targetAngleX, targetAngleY, targetAngleZ);
+
+        //isRunDices[index] = false;
+        results[index] = result;
+    }
+
     IEnumerator CheckResults()
     {
         Debug.Log(results.All(element => element > 0));
@@ -151,7 +196,6 @@ public class ControllerDice : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log(results.All(element => element > 0));
         topPanel.AnimOpen();
 
         string strResult = string.Join("\\", results) + " (" + results.Sum() +")";

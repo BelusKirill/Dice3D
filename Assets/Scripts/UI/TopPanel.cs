@@ -20,6 +20,7 @@ public class TopPanel : MonoBehaviour
 
     public void AnimClose()
     {
+        animTopPanel.ResetTrigger("Open");
         animTopPanel.SetTrigger("Close");
     }
 
