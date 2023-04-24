@@ -87,27 +87,27 @@ public class ControllerDice : MonoBehaviour
         {
             if (isAnim)
             {
-                RandomParamSpinning(dices[i].transform, i);
+                RandomParamSpinning(dices[i].transform, i, dices[i].type);
             }
             else
             {
-                NoAnimSpin(dices[i].transform, i);
+                NoAnimSpin(dices[i].transform, i, dices[i].type);
             }
         }
 
         StartCoroutine(CheckResults());
     }
 
-    private void RandomParamSpinning(Transform dice, int index)
+    private void RandomParamSpinning(Transform dice, int index, string type)
     {
         int coutSipn = Random.Range(4, 9);
-        int result = Random.Range(1, 7);
+        int result = GetRandomResult(type);
         Debug.Log(result);
 
-        StartCoroutine(RotateMeNow(dice, coutSipn, result, index));
+        StartCoroutine(RotateMeNow(dice, coutSipn, result, index, type));
     }
 
-    IEnumerator RotateMeNow(Transform dice, int coutSipn, int result, int index)
+    IEnumerator RotateMeNow(Transform dice, int coutSipn, int result, int index, string type)
     {
         isRunDices[index] = true;
         Quaternion targetAngles = new Quaternion();
@@ -127,7 +127,7 @@ public class ControllerDice : MonoBehaviour
             }
             else
             {
-                Vector3 vector3 = DeterminingAngleD6(result);
+                Vector3 vector3 = DeterminingAngle(type, result);
 
                 targetAngleX = vector3.x;
                 targetAngleY = vector3.y;
@@ -161,12 +161,12 @@ public class ControllerDice : MonoBehaviour
         results[index] = result;
     }
 
-    private void NoAnimSpin(Transform dice, int index)
+    private void NoAnimSpin(Transform dice, int index, string type)
     {
         //isRunDices[index] = true;
-        int result = Random.Range(1, 7);
+        int result = GetRandomResult(type);
 
-        Vector3 vector3 = DeterminingAngleD6(result);
+        Vector3 vector3 = DeterminingAngle(type, result);
 
         float targetAngleX = vector3.x;
         float targetAngleY = vector3.y;
@@ -186,6 +186,21 @@ public class ControllerDice : MonoBehaviour
         results[index] = result;
     }
 
+    private int GetRandomResult(string type)
+    {
+        int result = 0;
+        switch (type)
+        {
+            case "D3":
+                result = Random.Range(1, 4);
+                break;
+            case "D6":
+                result = Random.Range(1, 7);
+                break;
+        }
+        return result;
+    }
+
     IEnumerator CheckResults()
     {
         Debug.Log(results.All(element => element > 0));
@@ -201,6 +216,34 @@ public class ControllerDice : MonoBehaviour
         string strResult = string.Join("\\", results) + " (" + results.Sum() +")";
         topPanel.SetResult(strResult);
         ResetResult();
+    }
+
+    private Vector3 DeterminingAngle(string type, int result)
+    {
+        switch (type)
+        {
+            case "D3":
+                return DeterminingAngleD3(result);
+            case "D6":
+                return DeterminingAngleD6(result);
+            default:
+                return new Vector3(0, 0, 0);
+        }
+    }
+
+    private Vector3 DeterminingAngleD3(int result)
+    {
+        switch (result)
+        {
+            case 1:
+                return new Vector3(0, 90, 0);
+            case 2:
+                return new Vector3(0, 180, 0);
+            case 3:
+                return new Vector3(0, 270, 0);
+            default:
+                return new Vector3(0, 0, 0);
+        }
     }
 
     private Vector3 DeterminingAngleD6(int result)

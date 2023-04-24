@@ -20,7 +20,7 @@ public class ScrollItem : MonoBehaviour
 
     public void AddDice()
     {
-        if (countDices < 12)
+        if (countDices < 12 && controllerDice.GetComponent<ControllerDice>().dices.Count < 12)
         {
             countDices++;
             txtCountDices.text = countDices.ToString();
