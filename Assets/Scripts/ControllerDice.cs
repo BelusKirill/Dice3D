@@ -194,6 +194,9 @@ public class ControllerDice : MonoBehaviour
             case "D3":
                 result = Random.Range(1, 4);
                 break;
+            case "D4":
+                result = Random.Range(1, 5);
+                break;
             case "D6":
                 result = Random.Range(1, 7);
                 break;
@@ -224,6 +227,8 @@ public class ControllerDice : MonoBehaviour
         {
             case "D3":
                 return DeterminingAngleD3(result);
+            case "D4":
+                return DeterminingAngleD4(result);
             case "D6":
                 return DeterminingAngleD6(result);
             default:
@@ -241,6 +246,23 @@ public class ControllerDice : MonoBehaviour
                 return new Vector3(0, 180, 0);
             case 3:
                 return new Vector3(0, 270, 0);
+            default:
+                return new Vector3(0, 0, 0);
+        }
+    }
+
+    private Vector3 DeterminingAngleD4(int result)
+    {
+        switch (result)
+        {
+            case 1:
+                return new Vector3(300, 0, 0);
+            case 2:
+                return new Vector3(32, 287, 330);
+            case 3:
+                return new Vector3(350, 180, 0);
+            case 4:
+                return new Vector3(300, 0, 120);
             default:
                 return new Vector3(0, 0, 0);
         }
