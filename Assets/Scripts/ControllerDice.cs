@@ -14,6 +14,7 @@ public class ControllerDice : MonoBehaviour
     public int[] results;
 
     public TopPanel topPanel;
+    public GameObject toggleGroupResult;
 
     private void Start() {
         if (dices == null || dices.Count == 0)
@@ -102,8 +103,7 @@ public class ControllerDice : MonoBehaviour
     {
         int coutSipn = Random.Range(4, 9);
         int result = GetRandomResult(type);
-        Debug.Log(result);
-
+        
         StartCoroutine(RotateMeNow(dice, coutSipn, result, index, type));
     }
 
@@ -206,7 +206,6 @@ public class ControllerDice : MonoBehaviour
 
     IEnumerator CheckResults()
     {
-        Debug.Log(results.All(element => element > 0));
         while(true)
         {
             if(results.All(element => element > 0))
@@ -216,7 +215,25 @@ public class ControllerDice : MonoBehaviour
 
         topPanel.AnimOpen();
 
-        string strResult = string.Join("\\", results) + " (" + results.Sum() +")";
+        string strResult = "";
+
+        switch (toggleGroupResult.GetComponent<ToggleGroup>().GetIdToggleIsON())
+        {
+            case 1:
+                strResult = results.Sum().ToString();
+                break;
+            case 2:
+                strResult = string.Join("\\", results) + " (" + results.Sum() +")";
+                break;  
+            case 3:
+                strResult = string.Join("+", results) + "=" + results.Sum();
+                break;  
+            default:
+                strResult = results.Sum().ToString();
+                break;
+        }
+
+        //string strResult = string.Join("\\", results) + " (" + results.Sum() +")";
         topPanel.SetResult(strResult);
         ResetResult();
     }

@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 167644011}
   - component: {fileID: 167644012}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: Toggle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -564,19 +564,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167644010}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1942858103}
-  m_Father: {fileID: 1961293516}
+  m_Father: {fileID: 826225258}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.79700005, y: 0}
   m_AnchorMax: {x: 1, y: 0.41950002}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0.000076293945}
-  m_SizeDelta: {x: 0, y: -0.000061035}
+  m_AnchoredPosition: {x: -80.89548, y: 0}
+  m_SizeDelta: {x: 161.79095, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &167644012
 MonoBehaviour:
@@ -621,11 +621,11 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1942858104}
   toggleTransition: 1
   graphic: {fileID: 1044094268}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 826225259}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &244830234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,6 +1124,8 @@ MonoBehaviour:
   - {fileID: 927843315}
   - {fileID: 1057256216}
   - {fileID: 1716304424}
+  - {fileID: 765349295}
+  - {fileID: 244830236}
   controllerDice: {fileID: 749861158}
 --- !u!1 &362544350
 GameObject:
@@ -2559,6 +2561,7 @@ MonoBehaviour:
   isAnim: 1
   isRunDices: 
   results: 
+  toggleGroupResult: {fileID: 0}
   topPanel: {fileID: 895932156}
 --- !u!4 &749861159
 Transform:
@@ -2811,6 +2814,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765349293}
   m_CullTransparentMesh: 1
+--- !u!1 &826225257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 826225258}
+  - component: {fileID: 826225259}
+  - component: {fileID: 826225260}
+  m_Layer: 5
+  m_Name: ToggleGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &826225258
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826225257}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1001259811}
+  - {fileID: 2112031982}
+  - {fileID: 167644011}
+  m_Father: {fileID: 1961293516}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.79700005, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &826225259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826225257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 1
+--- !u!114 &826225260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826225257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6480f5e838d6c143b6ac11a9e2df846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggles:
+  - {fileID: 1001259812}
+  - {fileID: 2112031983}
+  - {fileID: 167644012}
 --- !u!1 &849217000
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,7 +3189,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 762914439, guid: d45674cdd6963d14d8192fc8facd5c0a, type: 3}
+  m_Sprite: {fileID: 685448060, guid: d45674cdd6963d14d8192fc8facd5c0a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3706,6 +3779,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1812751530}
+        m_TargetAssemblyTypeName: ScrollItem, Assembly-CSharp
+        m_MethodName: ClearDices
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &927843316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3839,7 +3924,7 @@ GameObject:
   - component: {fileID: 1001259811}
   - component: {fileID: 1001259812}
   m_Layer: 5
-  m_Name: Toggle2
+  m_Name: Toggle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3852,19 +3937,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001259810}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 461939446}
-  m_Father: {fileID: 1961293516}
-  m_RootOrder: 3
+  m_Father: {fileID: 826225258}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.79700005, y: 0.57750005}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -80.89551, y: 0}
+  m_SizeDelta: {x: 161.79102, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1001259812
 MonoBehaviour:
@@ -3909,7 +3994,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 461939447}
   toggleTransition: 1
   graphic: {fileID: 467862667}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 826225259}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4348,7 +4433,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -860288479, guid: d45674cdd6963d14d8192fc8facd5c0a, type: 3}
+  m_Sprite: {fileID: 762914439, guid: d45674cdd6963d14d8192fc8facd5c0a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -4842,7 +4927,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 369095481}
   m_HandleRect: {fileID: 369095480}
   m_Direction: 2
-  m_Value: 1.0000002
+  m_Value: 1
   m_Size: 0.15220483
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4945,7 +5030,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 762914439, guid: d45674cdd6963d14d8192fc8facd5c0a, type: 3}
+  m_Sprite: {fileID: 685448060, guid: d45674cdd6963d14d8192fc8facd5c0a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5367,7 +5452,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00018310547}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1306743967
@@ -5930,7 +6015,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1442379953
@@ -6738,7 +6823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 762914439, guid: d45674cdd6963d14d8192fc8facd5c0a, type: 3}
+  m_Sprite: {fileID: 1698882793, guid: d45674cdd6963d14d8192fc8facd5c0a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7014,8 +7099,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1231190329}
   m_HandleRect: {fileID: 1231190328}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.22084622
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7272,7 +7357,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 762914439, guid: d45674cdd6963d14d8192fc8facd5c0a, type: 3}
+  m_Sprite: {fileID: 685448060, guid: d45674cdd6963d14d8192fc8facd5c0a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -7752,7 +7837,7 @@ GameObject:
   - component: {fileID: 1961293518}
   - component: {fileID: 1961293517}
   m_Layer: 5
-  m_Name: AnimToggle (1)
+  m_Name: TypeOutResult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7772,9 +7857,7 @@ RectTransform:
   m_Children:
   - {fileID: 1786672364}
   - {fileID: 147782278}
-  - {fileID: 167644011}
-  - {fileID: 1001259811}
-  - {fileID: 2112031982}
+  - {fileID: 826225258}
   m_Father: {fileID: 1306743966}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7908,7 +7991,7 @@ GameObject:
   - component: {fileID: 2112031982}
   - component: {fileID: 2112031983}
   m_Layer: 5
-  m_Name: Toggle3
+  m_Name: Toggle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7921,19 +8004,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112031981}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 287712275}
-  m_Father: {fileID: 1961293516}
-  m_RootOrder: 4
+  m_Father: {fileID: 826225258}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.79700005, y: 0.29000002}
   m_AnchorMax: {x: 1, y: 0.71250004}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -80.89551, y: 0}
+  m_SizeDelta: {x: 161.79102, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2112031983
 MonoBehaviour:
@@ -7978,8 +8061,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 287712276}
   toggleTransition: 1
   graphic: {fileID: 1226391120}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 826225259}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
