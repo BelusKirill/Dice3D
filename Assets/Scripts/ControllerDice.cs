@@ -290,19 +290,19 @@ public class ControllerDice : MonoBehaviour
         switch (result)
         {
             case 1:
-                return new Vector3(90, 90, 0);
+                return new Vector3(180, 0, 180);
             case 2:
-                return new Vector3(180, 0, 90);
+                return new Vector3(270, 0, 180);
             case 3:
-                return new Vector3(90, 90, 90);
+                return new Vector3(270, 90, 180);
             case 4:
-                return new Vector3(270, 0, 0);
+                return new Vector3(270, 180, 180);
             case 5:
-                return new Vector3(180, 180, 90);
+                return new Vector3(270, 270, 180);
             case 6:
-                return new Vector3(90, 0, 90);                
+                return new Vector3(180, 180, 0);                
             default:
-                return new Vector3(0, 0, 0);
+                return new Vector3(180, 0, 180);
         }
     }
 

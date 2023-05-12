@@ -29,20 +29,26 @@ public class ControllerPanelCanter : MonoBehaviour
     {
         if (!_SettingStates)
         {
-            Setting();
+            SwipeSetting(animPanelDices);
+            _DicesStates = !_DicesStates;
         }
-
-        Dices();
+        else
+        {
+            Dices();
+        }
     }
 
     public void PressSettingBtn()
     {
         if (!_DicesStates)
         {
-            Dices();
+            SwipeDice(animPanelSetting);
+            _SettingStates = !_SettingStates;
         }
-        
-        Setting();
+        else
+        {
+            Setting();
+        }
     }
 
     private void Dices()
@@ -71,5 +77,19 @@ public class ControllerPanelCanter : MonoBehaviour
             animPanelSetting.SetTrigger("Close");
             _SettingStates = !_SettingStates;
         }
+    }
+
+    private void SwipeSetting(Animator anim)
+    {
+        animPanelSetting.SetTrigger("Swipe1");
+        anim.SetTrigger("Swipe2");
+        _SettingStates = !_SettingStates;
+    }
+
+    private void SwipeDice(Animator anim)
+    {
+        animPanelDices.SetTrigger("Swipe1");
+        anim.SetTrigger("Swipe2");
+        _DicesStates = !_DicesStates;
     }
 }
