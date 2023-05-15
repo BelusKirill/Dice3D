@@ -7,9 +7,11 @@ public class ControllerPanelCanter : MonoBehaviour
     [Header("Анимация вернего бара")]
     public Animator animPanelDices;
     public Animator animPanelSetting;
+    public Animator animPanelThemes;
 
     private bool _DicesStates = true;
     private bool _SettingStates = true;
+    private bool _ThemesStates = true;
 
     public void ChangingState()
     {
@@ -32,6 +34,11 @@ public class ControllerPanelCanter : MonoBehaviour
             SwipeSetting(animPanelDices);
             _DicesStates = !_DicesStates;
         }
+        else if (!_ThemesStates)
+        {
+            SwipeThemes(animPanelDices);
+            _DicesStates = !_DicesStates;
+        }
         else
         {
             Dices();
@@ -45,9 +52,32 @@ public class ControllerPanelCanter : MonoBehaviour
             SwipeDice(animPanelSetting);
             _SettingStates = !_SettingStates;
         }
+        else if (!_ThemesStates)
+        {
+            SwipeThemes(animPanelSetting);
+            _SettingStates = !_SettingStates;
+        }
         else
         {
             Setting();
+        }
+    }
+
+    public void PressThemesBtn()
+    {
+        if (!_DicesStates)
+        {
+            SwipeDice(animPanelThemes);
+            _ThemesStates = !_ThemesStates;
+        }
+        else if (!_SettingStates)
+        {
+            SwipeSetting(animPanelThemes);
+            _ThemesStates = !_ThemesStates;
+        }
+        else
+        {
+            Themes();
         }
     }
 
@@ -79,6 +109,20 @@ public class ControllerPanelCanter : MonoBehaviour
         }
     }
 
+    private void Themes()
+    {
+        if (_ThemesStates)
+        {
+            animPanelThemes.SetTrigger("Open");
+            _ThemesStates = !_ThemesStates;
+        }
+        else
+        {
+            animPanelThemes.SetTrigger("Close");
+            _ThemesStates = !_ThemesStates;
+        }
+    }
+
     private void SwipeSetting(Animator anim)
     {
         animPanelSetting.SetTrigger("Swipe1");
@@ -91,5 +135,12 @@ public class ControllerPanelCanter : MonoBehaviour
         animPanelDices.SetTrigger("Swipe1");
         anim.SetTrigger("Swipe2");
         _DicesStates = !_DicesStates;
+    }
+
+    private void SwipeThemes(Animator anim)
+    {
+        animPanelThemes.SetTrigger("Swipe1");
+        anim.SetTrigger("Swipe2");
+        _ThemesStates = !_ThemesStates;
     }
 }

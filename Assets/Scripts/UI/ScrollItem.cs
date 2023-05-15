@@ -6,7 +6,6 @@ using TMPro;
 
 public class ScrollItem : MonoBehaviour
 {
-    public Transform dice;
     public string diceType;
     public GameObject controllerDice;
     public TextMeshProUGUI txtCountDices;
@@ -24,7 +23,7 @@ public class ScrollItem : MonoBehaviour
         {
             countDices++;
             txtCountDices.text = countDices.ToString();
-            Transform newDiceT = Instantiate(dice);
+            Transform newDiceT = Instantiate(controllerDice.GetComponent<Theams>().GetDice(diceType));
             newDiceT.SetParent(controllerDice.transform);
             Dice newDice = new Dice();
             newDice.transform = newDiceT;

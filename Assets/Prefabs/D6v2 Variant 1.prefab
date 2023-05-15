@@ -54,7 +54,15 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a275a46f56fbd3f468502d14e4791444, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2394118274932949430, guid: a275a46f56fbd3f468502d14e4791444, type: 3}
+      objectReference: {fileID: 2100000, guid: 216892814c5f0f84e9d1991a2a9842cb, type: 2}
+    - target: {fileID: -7511558181221131132, guid: a275a46f56fbd3f468502d14e4791444, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 1525853219674133680, guid: a275a46f56fbd3f468502d14e4791444, type: 3}
+    - target: {fileID: -7511558181221131132, guid: a275a46f56fbd3f468502d14e4791444, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: -1880488188248130637, guid: a275a46f56fbd3f468502d14e4791444, type: 3}
     - target: {fileID: 919132149155446097, guid: a275a46f56fbd3f468502d14e4791444, type: 3}
       propertyPath: m_Name
       value: D6v2 Variant 1
