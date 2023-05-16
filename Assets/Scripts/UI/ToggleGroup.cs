@@ -19,4 +19,10 @@ public class ToggleGroup : MonoBehaviour
 
         return res;
     }
+
+    public void SetIdToggleIsON(int id)
+    {
+        if (id < toggles.Length)
+            toggles[id].isOn = true;
+    }
 }

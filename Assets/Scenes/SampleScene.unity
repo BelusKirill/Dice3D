@@ -834,7 +834,19 @@ MonoBehaviour:
   m_Group: {fileID: 826225259}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 480389763}
+        m_TargetAssemblyTypeName: Setting, Assembly-CSharp
+        m_MethodName: SetIdToggleIsON
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &220240037
 GameObject:
@@ -2887,6 +2899,7 @@ GameObject:
   - component: {fileID: 480389762}
   - component: {fileID: 480389761}
   - component: {fileID: 480389760}
+  - component: {fileID: 480389763}
   m_Layer: 5
   m_Name: Panel_setting
   m_TagString: Untagged
@@ -2973,6 +2986,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480389757}
   m_CullTransparentMesh: 1
+--- !u!114 &480389763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480389757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddfe13a577873c84cac217cac6454080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  is_anim: {fileID: 514609030}
+  speed: {fileID: 763817807}
+  typeResOut: {fileID: 826225257}
+  selectThem: {fileID: 1262919261}
 --- !u!1 &488456236
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,6 +3225,18 @@ MonoBehaviour:
       - m_Target: {fileID: 749861158}
         m_TargetAssemblyTypeName: ControllerDice, Assembly-CSharp
         m_MethodName: ChangeAnimSpin
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 514609030}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 480389763}
+        m_TargetAssemblyTypeName: Setting, Assembly-CSharp
+        m_MethodName: SetIsAnim
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 514609030}
@@ -4203,13 +4244,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idActualTheam: 0
   prefabsTheams:
-  - d3: {fileID: 4275277399717498430, guid: 4b7c0e801eba2794c97df71fb55be8df, type: 3}
+  - d3: {fileID: 5860665432590736641, guid: 07ab9424f9c84454385702a600540cae, type: 3}
     d4: {fileID: 3977044048860135443, guid: 4e070015b87789b4d9a3c8723c4b5955, type: 3}
     d6: {fileID: 5546326760993463044, guid: 40dcc311b93bdf749b0fae17ce2d2a52, type: 3}
-  - d3: {fileID: 4275277399717498430, guid: 4b7c0e801eba2794c97df71fb55be8df, type: 3}
+  - d3: {fileID: 5424444511196511902, guid: b27a01114b6509d4bafc3cf012f077d4, type: 3}
     d4: {fileID: 3977044048860135443, guid: 4e070015b87789b4d9a3c8723c4b5955, type: 3}
     d6: {fileID: 5546326760993463044, guid: 72930016e2634df4f87cc1ca86c694f6, type: 3}
-  - d3: {fileID: 4275277399717498430, guid: 4b7c0e801eba2794c97df71fb55be8df, type: 3}
+  - d3: {fileID: 4814330588250546601, guid: 49cb339205cbc3f47b726cd31bca7203, type: 3}
     d4: {fileID: 3977044048860135443, guid: 4e070015b87789b4d9a3c8723c4b5955, type: 3}
     d6: {fileID: 5546326760993463044, guid: c41c4d6d8a03d96478c5d75c3dd7324d, type: 3}
   toggleGroupTheams: {fileID: 1262919261}
@@ -4383,6 +4424,18 @@ MonoBehaviour:
       - m_Target: {fileID: 749861158}
         m_TargetAssemblyTypeName: ControllerDice, Assembly-CSharp
         m_MethodName: ChangeSpeedSpin
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 763817807}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 480389763}
+        m_TargetAssemblyTypeName: Setting, Assembly-CSharp
+        m_MethodName: SetSpeed
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 763817807}
@@ -5839,7 +5892,19 @@ MonoBehaviour:
   m_Group: {fileID: 1262919263}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 480389763}
+        m_TargetAssemblyTypeName: Setting, Assembly-CSharp
+        m_MethodName: SetIdSelectThem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &963194225
 GameObject:
@@ -6120,7 +6185,19 @@ MonoBehaviour:
   m_Group: {fileID: 826225259}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 480389763}
+        m_TargetAssemblyTypeName: Setting, Assembly-CSharp
+        m_MethodName: SetIdToggleIsON
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1009624532
 GameObject:
@@ -6209,7 +6286,19 @@ MonoBehaviour:
   m_Group: {fileID: 1262919263}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 480389763}
+        m_TargetAssemblyTypeName: Setting, Assembly-CSharp
+        m_MethodName: SetIdSelectThem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1030545422
 GameObject:
@@ -9732,7 +9821,19 @@ MonoBehaviour:
   m_Group: {fileID: 1262919263}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 480389763}
+        m_TargetAssemblyTypeName: Setting, Assembly-CSharp
+        m_MethodName: SetIdSelectThem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &1575636872
 GameObject:
@@ -12574,5 +12675,17 @@ MonoBehaviour:
   m_Group: {fileID: 826225259}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 480389763}
+        m_TargetAssemblyTypeName: Setting, Assembly-CSharp
+        m_MethodName: SetIdToggleIsON
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0

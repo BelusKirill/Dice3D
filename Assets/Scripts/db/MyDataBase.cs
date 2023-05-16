@@ -99,4 +99,33 @@ static class MyDataBase
 
         return DS.Tables[0];
     }
+
+    public static string GetParamSetting(string nameField)
+    {
+        OpenConnection();
+        command.CommandText = $"SELECT value FROM \"settings\" WHERE name_setting = '{nameField}'";
+        var answer = command.ExecuteScalar();
+        CloseConnection();
+
+        if (answer != null) return answer.ToString();
+        else return null;
+    }
+
+    public static void SetParamBoolSetting(string nameField, bool bvalue)
+    {
+        string value = bvalue ? "t" : "f";
+
+        OpenConnection();
+        command.CommandText = $"UPDATE \"settings\" SET \"value\" = '{value}' WHERE name_setting = '{nameField}'";
+        command.ExecuteNonQuery();
+        CloseConnection();
+    }
+
+    public static void SetParamIntSetting(string nameField, int bvalue)
+    {
+        OpenConnection();
+        command.CommandText = $"UPDATE \"settings\" SET \"value\" = '{bvalue}' WHERE name_setting = '{nameField}'";
+        command.ExecuteNonQuery();
+        CloseConnection();
+    }
 }
