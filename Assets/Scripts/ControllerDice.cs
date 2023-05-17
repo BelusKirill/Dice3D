@@ -273,13 +273,13 @@ public class ControllerDice : MonoBehaviour
         switch (result)
         {
             case 1:
-                return new Vector3(300, 0, 0);
+                return new Vector3(90, 0, 0);
             case 2:
-                return new Vector3(32, 287, 330);
+                return new Vector3(217, 16, 28);
             case 3:
-                return new Vector3(350, 180, 0);
+                return new Vector3(157, 147, -14);
             case 4:
-                return new Vector3(300, 0, 120);
+                return new Vector3(95, 0, 112);
             default:
                 return new Vector3(0, 0, 0);
         }
