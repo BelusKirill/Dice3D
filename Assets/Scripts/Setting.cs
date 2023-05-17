@@ -13,6 +13,8 @@ public class Setting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MyDataBase.CheckedDate();
+
         is_anim.isOn = MyDataBase.GetParamSetting("is_anim") != "f";
         speed.value = float.Parse(MyDataBase.GetParamSetting("speed"));
         typeResOut.GetComponent<ToggleGroup>().SetIdToggleIsON(int.Parse(MyDataBase.GetParamSetting("type_res_out")));

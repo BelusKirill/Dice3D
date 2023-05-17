@@ -32,6 +32,31 @@ static class MyDataBase
     #endif
     }
 
+    public static void CheckedDate()
+    {
+        string sql_is_anim = "SELECT count(*) FROM \"settings\" WHERE name_setting = 'is_anim'";
+        string sql_speed = "SELECT count(*) FROM \"settings\" WHERE name_setting = 'speed'";
+        string sql_type_res_out = "SELECT count(*) FROM \"settings\" WHERE name_setting = 'type_res_out'";
+        string sql_selected_them = "SELECT count(*) FROM \"settings\" WHERE name_setting = 'selected_them'";
+
+        if (GetStrQuery(sql_is_anim) == "0")
+        {
+            ExecuteQueryWithoutAnswer("INSERT INTO \"settings\" (\"name_setting\", \"value\") VALUES ('is_anim', 't')");
+        }
+        if (GetStrQuery(sql_speed) == "0")
+        {
+            ExecuteQueryWithoutAnswer("INSERT INTO \"settings\" (\"name_setting\", \"value\") VALUES ('speed', '6')");
+        }
+        if (GetStrQuery(sql_type_res_out) == "0")
+        {
+            ExecuteQueryWithoutAnswer("INSERT INTO \"settings\" (\"name_setting\", \"value\") VALUES ('type_res_out', '0')");
+        }
+        if (GetStrQuery(sql_selected_them) == "0")
+        {
+            ExecuteQueryWithoutAnswer("INSERT INTO \"settings\" (\"name_setting\", \"value\") VALUES ('selected_them', '0')");
+        }
+    }
+
     /// <summary> Распаковывает базу данных в указанный путь. </summary>
     /// <param name="toPath"> Путь в который нужно распаковать базу данных. </param>
     private static void UnpackDatabase(string toPath)
@@ -98,6 +123,17 @@ static class MyDataBase
         CloseConnection();
 
         return DS.Tables[0];
+    }
+
+    public static string GetStrQuery(string query)
+    {
+        OpenConnection();
+        command.CommandText = query;
+        var answer = command.ExecuteScalar();
+        CloseConnection();
+
+        if (answer != null) return answer.ToString();
+        else return null;
     }
 
     public static string GetParamSetting(string nameField)
