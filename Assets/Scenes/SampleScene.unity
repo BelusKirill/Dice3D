@@ -2328,7 +2328,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 685448060, guid: d45674cdd6963d14d8192fc8facd5c0a, type: 3}
+  m_Sprite: {fileID: -844998325, guid: 971a1c774da40ba41809827099b79664, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -10175,7 +10175,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 685448060, guid: d45674cdd6963d14d8192fc8facd5c0a, type: 3}
+  m_Sprite: {fileID: 1792891818, guid: 971a1c774da40ba41809827099b79664, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -10251,7 +10251,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 685448060, guid: d45674cdd6963d14d8192fc8facd5c0a, type: 3}
+  m_Sprite: {fileID: -264988205, guid: 971a1c774da40ba41809827099b79664, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -12735,6 +12735,11 @@ MonoBehaviour:
   animPanelDices: {fileID: 311694692}
   animPanelSetting: {fileID: 480389760}
   animPanelThemes: {fileID: 473708468}
+  btnDices: {fileID: 1835960075}
+  btnSetting: {fileID: 1162425525}
+  btnThemes: {fileID: 1030545424}
+  normalColor: {r: 0.33333334, g: 0.34117648, b: 0.46274513, a: 0}
+  selectedColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &1961293515
 GameObject:
   m_ObjectHideFlags: 0
