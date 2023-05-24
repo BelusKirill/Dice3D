@@ -41,6 +41,26 @@ public class ControllerPanelCanter : MonoBehaviour
         }
     }
 
+    public void PressMidleBtn()
+    {
+        if (!_SettingStates)
+        {
+            Setting();
+        }
+        else if (!_ThemesStates)
+        {
+            Themes();
+        }
+        else if (!_PatternStates)
+        {
+            Pattern();
+        }
+        else if (!_HistoryStates)
+        {
+            History();
+        }
+    }
+
 // 1
     public void PressDicesBtn()
     {
@@ -197,12 +217,14 @@ public class ControllerPanelCanter : MonoBehaviour
         if (_SettingStates)
         {
             animPanelSetting.SetTrigger("Open");
+            SetColorNormal(btnDices);
             SetColorSelected(btnSetting);
             _SettingStates = !_SettingStates;
         }
         else
         {
             animPanelSetting.SetTrigger("Close");
+            SetColorSelected(btnDices);
             SetColorNormal(btnSetting);
             _SettingStates = !_SettingStates;
         }
@@ -213,12 +235,14 @@ public class ControllerPanelCanter : MonoBehaviour
         if (_ThemesStates)
         {
             animPanelThemes.SetTrigger("Open");
+            SetColorNormal(btnDices);
             SetColorSelected(btnThemes);
             _ThemesStates = !_ThemesStates;
         }
         else
         {
             animPanelThemes.SetTrigger("Close");
+            SetColorSelected(btnDices);
             SetColorNormal(btnThemes);
             _ThemesStates = !_ThemesStates;
         }
@@ -229,12 +253,14 @@ public class ControllerPanelCanter : MonoBehaviour
         if (_PatternStates)
         {
             animPanelPattern.SetTrigger("Open");
+            SetColorNormal(btnDices);
             SetColorSelected(btnPattern);
             _PatternStates = !_PatternStates;
         }
         else
         {
             animPanelPattern.SetTrigger("Close");
+            SetColorSelected(btnDices);
             SetColorNormal(btnPattern);
             _PatternStates = !_PatternStates;
         }
@@ -245,12 +271,14 @@ public class ControllerPanelCanter : MonoBehaviour
         if (_HistoryStates)
         {
             animPanelHistory.SetTrigger("Open");
+            SetColorNormal(btnDices);
             SetColorSelected(btnHistory);
             _HistoryStates = !_HistoryStates;
         }
         else
         {
             animPanelHistory.SetTrigger("Close");
+            SetColorSelected(btnDices);
             SetColorNormal(btnHistory);
             _HistoryStates = !_HistoryStates;
         }
