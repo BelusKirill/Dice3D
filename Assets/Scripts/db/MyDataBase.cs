@@ -164,4 +164,29 @@ static class MyDataBase
         command.ExecuteNonQuery();
         CloseConnection();
     }
+
+    public static void InsertResult(string sreRes)
+    {
+        OpenConnection();
+        command.CommandText = $"INSERT INTO \"history\" (\"result\") VALUES ('{sreRes}')";
+        command.ExecuteNonQuery();
+        CloseConnection();
+    }
+
+    public static DataTable GetListHistory()
+    {
+        string query = "SELECT date, result FROM \"history\" ORDER BY \"date\" DESC LIMIT 0,20";
+
+        OpenConnection();
+
+        SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection);
+
+        DataSet DS = new DataSet();
+        adapter.Fill(DS);
+        adapter.Dispose();
+
+        CloseConnection();
+
+        return DS.Tables[0];
+    }
 }

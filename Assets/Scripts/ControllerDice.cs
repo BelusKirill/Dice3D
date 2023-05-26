@@ -234,7 +234,7 @@ public class ControllerDice : MonoBehaviour
         }
 
         //string strResult = string.Join("\\", results) + " (" + results.Sum() +")";
-        topPanel.SetResult(strResult);
+        topPanel.SetResult(strResult, results);
         ResetResult();
     }
 
