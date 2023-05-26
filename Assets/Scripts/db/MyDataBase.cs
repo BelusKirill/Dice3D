@@ -85,6 +85,26 @@ static class MyDataBase
         command.Dispose();
     }
 
+    // Создание таблиц
+    private static void CreateTableHistory()
+    {
+        string query = "CREATE TABLE IF NOT EXISTS \"history\" ( " +
+                            "\"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                            "\"date\" DATE DEFAULT CURRENT_TIMESTAMP, " +
+                            "\"result\" TEXT " +
+                       ");";
+
+        OpenConnection();
+        command.CommandText = query;
+        command.ExecuteNonQuery();
+        CloseConnection();
+    }
+
+    public static void CreateTables()
+    {
+        CreateTableHistory();
+    }
+
     /// <summary> Этот метод выполняет запрос query. </summary>
     /// <param name="query"> Собственно запрос. </param>
     public static void ExecuteQueryWithoutAnswer(string query)
