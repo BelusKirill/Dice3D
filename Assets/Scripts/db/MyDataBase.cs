@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Data;
 using Mono.Data.Sqlite;
 using System.IO;
@@ -168,25 +169,34 @@ static class MyDataBase
     public static void InsertResult(string sreRes)
     {
         OpenConnection();
-        command.CommandText = $"INSERT INTO \"history\" (\"result\") VALUES ('{sreRes}')";
+        command.CommandText = $"INSERT INTO \"history\" (\"date\", \"result\") VALUES ('{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}', '{sreRes}')";
         command.ExecuteNonQuery();
         CloseConnection();
     }
 
     public static DataTable GetListHistory()
     {
-        string query = "SELECT date, result FROM \"history\" ORDER BY \"date\" DESC LIMIT 0,20";
+        try
+        {
+            string query = "SELECT date, result FROM \"history\" ORDER BY \"date\" DESC LIMIT 0,20";
 
-        OpenConnection();
+            OpenConnection();
 
-        SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection);
+            SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection);
 
-        DataSet DS = new DataSet();
-        adapter.Fill(DS);
-        adapter.Dispose();
+            DataSet DS = new DataSet();
+            adapter.Fill(DS);
+            adapter.Dispose();
 
-        CloseConnection();
+            CloseConnection();
 
-        return DS.Tables[0];
+            return DS.Tables[0];
+        }
+        catch (Exception ex)
+        {
+            Debug.Log(ex.Message);
+        }
+
+        return new DataTable();
     }
 }
