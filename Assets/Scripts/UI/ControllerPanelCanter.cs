@@ -125,7 +125,6 @@ public class ControllerPanelCanter : MonoBehaviour
         SetColorSelected(btnSetting);
         _SettingStates = !_SettingStates;
         StartCoroutine(HideSettingCoroutine());
-
     }
 
     public void PressThemesBtn()
@@ -393,8 +392,6 @@ public class ControllerPanelCanter : MonoBehaviour
         {
             yield return null;
             Vector2 patelRect = contentPanelSetting.GetComponent<RectTransform>().anchoredPosition;
-
-            Debug.Log(_SettingStates);
 
             if (hideValue > patelRect.y)
             {

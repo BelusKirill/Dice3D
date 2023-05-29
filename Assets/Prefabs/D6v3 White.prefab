@@ -73,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 33c514394d2cd464bbc01d7de0917d54, type: 2}
     - target: {fileID: 919132149155446097, guid: 0178a674f132d6343b4de01985362d4c, type: 3}
       propertyPath: m_Name
-      value: D6v3 Variant 1
+      value: D6v3 White
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0178a674f132d6343b4de01985362d4c, type: 3}

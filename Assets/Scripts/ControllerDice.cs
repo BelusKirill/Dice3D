@@ -46,6 +46,19 @@ public class ControllerDice : MonoBehaviour
         }
     }
 
+    public void UpdateDices()
+    {
+        foreach (Dice dice in dices)
+        {
+            Transform newDiceT = Instantiate(gameObject.GetComponent<Theams>().GetDice(dice.type), dice.transform.position, dice.transform.rotation);
+            newDiceT.SetParent(transform);
+
+            Destroy(dice.transform.gameObject);
+
+            dice.transform = newDiceT;
+        }
+    }
+
     public void ClearDices()
     {
         foreach (Dice dice in dices)
