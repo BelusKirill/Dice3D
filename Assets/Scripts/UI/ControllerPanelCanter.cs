@@ -12,6 +12,17 @@ public class ControllerPanelCanter : MonoBehaviour
     public Animator animPanelPattern;
     public Animator animPanelHistory;
 
+    [Header("Contents")]
+    public GameObject contentPanelHistory;
+    public GameObject contentPanelPattern;
+    public GameObject contentPanelThemesTab1;
+    public GameObject contentPanelThemesTab2;
+    public GameObject contentPanelSetting;
+
+    [Header("Значение для скрытия свайпом")]
+    public int hideValue;
+
+    [Header("Кнопки")]
     public Button btnDices;
     public Button btnSetting;
     public Button btnThemes;
@@ -113,6 +124,7 @@ public class ControllerPanelCanter : MonoBehaviour
         }
         SetColorSelected(btnSetting);
         _SettingStates = !_SettingStates;
+        StartCoroutine(HideSettingCoroutine());
 
     }
 
@@ -141,6 +153,7 @@ public class ControllerPanelCanter : MonoBehaviour
         }
         SetColorSelected(btnThemes);
         _ThemesStates = !_ThemesStates;
+        StartCoroutine(HideThemesCoroutine());
     }
 
     public void PressPatternBtn()
@@ -168,6 +181,7 @@ public class ControllerPanelCanter : MonoBehaviour
         }
         SetColorSelected(btnPattern);
         _PatternStates = !_PatternStates;
+        StartCoroutine(HidePatternCoroutine());
     }
 
     public void PressHistoryBtn()
@@ -195,6 +209,7 @@ public class ControllerPanelCanter : MonoBehaviour
         }
         SetColorSelected(btnHistory);
         _HistoryStates = !_HistoryStates;
+        StartCoroutine(HideHistoryCoroutine());
     }
 
 // 2
@@ -220,6 +235,7 @@ public class ControllerPanelCanter : MonoBehaviour
             SetColorNormal(btnDices);
             SetColorSelected(btnSetting);
             _SettingStates = !_SettingStates;
+            StartCoroutine(HideSettingCoroutine());
         }
         else
         {
@@ -238,6 +254,7 @@ public class ControllerPanelCanter : MonoBehaviour
             SetColorNormal(btnDices);
             SetColorSelected(btnThemes);
             _ThemesStates = !_ThemesStates;
+            StartCoroutine(HideThemesCoroutine());
         }
         else
         {
@@ -256,6 +273,7 @@ public class ControllerPanelCanter : MonoBehaviour
             SetColorNormal(btnDices);
             SetColorSelected(btnPattern);
             _PatternStates = !_PatternStates;
+            StartCoroutine(HidePatternCoroutine());
         }
         else
         {
@@ -274,6 +292,7 @@ public class ControllerPanelCanter : MonoBehaviour
             SetColorNormal(btnDices);
             SetColorSelected(btnHistory);
             _HistoryStates = !_HistoryStates;
+            StartCoroutine(HideHistoryCoroutine());
         }
         else
         {
@@ -325,6 +344,66 @@ public class ControllerPanelCanter : MonoBehaviour
     }
 
 // 4
+    private IEnumerator HideHistoryCoroutine()
+    {
+        while(!_HistoryStates)
+        {
+            yield return null;
+            Vector2 patelRect = contentPanelHistory.GetComponent<RectTransform>().anchoredPosition;
+
+            if (hideValue > patelRect.y)
+            {
+                History();
+            }
+        }
+    }
+
+    private IEnumerator HidePatternCoroutine()
+    {
+        while(!_PatternStates)
+        {
+            yield return null;
+            Vector2 patelRect = contentPanelPattern.GetComponent<RectTransform>().anchoredPosition;
+
+            if (hideValue > patelRect.y)
+            {
+                Pattern();
+            }
+        }
+    }
+
+    private IEnumerator HideThemesCoroutine()
+    {
+        while(!_ThemesStates)
+        {
+            yield return null;
+            Vector2 patelTab1Rect = contentPanelThemesTab1.GetComponent<RectTransform>().anchoredPosition;
+            Vector2 patelTab2Rect = contentPanelThemesTab2.GetComponent<RectTransform>().anchoredPosition;
+
+            if (hideValue > patelTab1Rect.y || hideValue > patelTab2Rect.y)
+            {
+                Themes();
+            }
+        }
+    }
+
+    private IEnumerator HideSettingCoroutine()
+    {
+        while(!_SettingStates)
+        {
+            yield return null;
+            Vector2 patelRect = contentPanelSetting.GetComponent<RectTransform>().anchoredPosition;
+
+            Debug.Log(_SettingStates);
+
+            if (hideValue > patelRect.y)
+            {
+                Setting();
+            }
+        }
+    }
+
+// 5
     private void SetColorSelected(Button button)
     {
         ColorBlock cb = button.colors;
