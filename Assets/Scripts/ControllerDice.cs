@@ -16,6 +16,9 @@ public class ControllerDice : MonoBehaviour
     public TopPanel topPanel;
     public GameObject toggleGroupResult;
 
+    public Animator animCamera;
+
+
     private void Start() {
         if (dices == null || dices.Count == 0)
         {
@@ -96,7 +99,22 @@ public class ControllerDice : MonoBehaviour
         if (IsRunSping()) return;
         
         if (isAnim)
+        {
             topPanel.AnimClose();
+            int resRand = Random.Range(0, 2);
+
+            switch (resRand)
+            {
+                case 0:
+                    animCamera.SetTrigger("Shak");
+                    break;
+
+                case 1:
+                    animCamera.SetTrigger("Shak2");
+                    break;
+            }
+        }
+
         for (int i = 0; i < dices.Count; i++)
         {
             if (isAnim)
