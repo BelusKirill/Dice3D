@@ -51,6 +51,7 @@ public class ControllerDice : MonoBehaviour
 
     public void UpdateDices()
     {
+        int typeTheam = gameObject.GetComponent<Theams>().GetTypeTheam();
         foreach (Dice dice in dices)
         {
             Transform newDiceT = Instantiate(gameObject.GetComponent<Theams>().GetDice(dice.type), dice.transform.position, dice.transform.rotation);
@@ -59,6 +60,7 @@ public class ControllerDice : MonoBehaviour
             Destroy(dice.transform.gameObject);
 
             dice.transform = newDiceT;
+            dice.typeTheam = typeTheam;
         }
     }
 

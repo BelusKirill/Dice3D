@@ -24,4 +24,9 @@ public class Theams : MonoBehaviour
                 return null;
         }
     }
+
+    public int GetTypeTheam()
+    {
+        return toggleGroupTheams.GetComponent<ToggleGroup>().GetIdToggleIsON() - 1;
+    }
 }

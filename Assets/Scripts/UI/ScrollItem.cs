@@ -24,9 +24,11 @@ public class ScrollItem : MonoBehaviour
             countDices++;
             txtCountDices.text = countDices.ToString();
             Transform newDiceT = Instantiate(controllerDice.GetComponent<Theams>().GetDice(diceType));
+            int typeTheam = controllerDice.GetComponent<Theams>().GetTypeTheam();
             newDiceT.SetParent(controllerDice.transform);
             Dice newDice = new Dice();
             newDice.transform = newDiceT;
+            newDice.typeTheam = typeTheam;
             newDice.type = diceType;
             controllerDice.GetComponent<ControllerDice>().AddDice(newDice);
         }
