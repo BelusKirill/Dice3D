@@ -7,6 +7,7 @@ public class ItemSeatPattern : MonoBehaviour
 {
     public TextMeshProUGUI txtName;
     public GameObject btnPanel;
+    public string pattern;
 
     public string text 
     {
@@ -19,7 +20,13 @@ public class ItemSeatPattern : MonoBehaviour
 
     public void btnDell()
     {
+        pattern = "";
         txtName.text = "< Пусто >";
         btnPanel.SetActive(false);
+    }
+
+    public void UpLoad()
+    {
+        Debug.Log("gg");
     }
 }

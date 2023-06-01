@@ -9,6 +9,7 @@ public class Patterns : MonoBehaviour
     public GameObject ContentPatten;
     public List<Transform> listPattern;
     public TextMeshProUGUI txtNamePattern;
+    public GameObject controllerDice;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +37,16 @@ public class Patterns : MonoBehaviour
 
         if (activItem != null)
         {
-            activItem.GetComponent<ItemSeatPattern>().text = txtNamePattern.text;
+            ItemSeatPattern itemSeatPattern = activItem.GetComponent<ItemSeatPattern>();
+            itemSeatPattern.text = txtNamePattern.text;
+            string msg = "";
+
+            foreach (Dice dice in controllerDice.GetComponent<ControllerDice>().dices)
+            {
+                msg += $"{dice.type}|{dice.typeTheam} ";
+            }
+
+            itemSeatPattern.pattern = msg;
         }
     }
 }
