@@ -534,8 +534,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "< \u041F\u0443\u0441\u0442\u043E >"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 18442771ab124eb47953ec5a2dc15b26, type: 2}
+  m_sharedMaterial: {fileID: -4084867783149910495, guid: 18442771ab124eb47953ec5a2dc15b26, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -794,3 +794,4 @@ MonoBehaviour:
   txtName: {fileID: 8967732179966820938}
   btnPanel: {fileID: 5795545388719549714}
   pattern: 
+  numPosition: 0
