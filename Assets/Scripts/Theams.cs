@@ -25,6 +25,21 @@ public class Theams : MonoBehaviour
         }
     }
 
+    public Transform GetDice(string type, int idTheam)
+    {
+        switch (type)
+        {
+            case "D3":
+                return prefabsTheams[idTheam].d3;
+            case "D4":
+                return prefabsTheams[idTheam].d4;
+            case "D6":
+                return prefabsTheams[idTheam].d6;
+            default:
+                return null;
+        }
+    }
+
     public int GetTypeTheam()
     {
         return toggleGroupTheams.GetComponent<ToggleGroup>().GetIdToggleIsON() - 1;

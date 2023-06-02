@@ -11,6 +11,11 @@ public class ItemSeatPattern : MonoBehaviour
 
     public string text 
     {
+        get
+        {
+            return txtName.text;
+        }
+
         set
         {
             txtName.text = value;

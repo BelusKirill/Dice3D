@@ -49,6 +49,17 @@ public class ControllerDice : MonoBehaviour
         }
     }
 
+    public void DelDices()
+    {
+        foreach (Dice dice in dices)
+        {
+            Destroy(dice.transform.gameObject);
+        }
+        
+        dices.Clear();
+        ResetParam();
+    }
+
     public void UpdateDices()
     {
         int typeTheam = gameObject.GetComponent<Theams>().GetTypeTheam();
