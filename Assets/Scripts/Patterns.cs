@@ -30,13 +30,16 @@ public class Patterns : MonoBehaviour
             return; 
 
         Transform activItem = null;
+        int numActivItem = 0;
 
         foreach(Transform item in listPattern)
         {
             if (item.GetComponent<Toggle>().isOn)
             {
                 activItem = item;
+                break;
             }
+            numActivItem ++;
         }
 
         if (activItem != null)
@@ -53,6 +56,7 @@ public class Patterns : MonoBehaviour
 
             itemSeatPattern.text = txtNamePattern.text;
             itemSeatPattern.pattern = msg;
+            MyDataBase.InsertPattern(numActivItem, itemSeatPattern.text, itemSeatPattern.pattern);
         }
     }
 

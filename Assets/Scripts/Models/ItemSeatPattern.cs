@@ -8,6 +8,7 @@ public class ItemSeatPattern : MonoBehaviour
     public TextMeshProUGUI txtName;
     public GameObject btnPanel;
     public string pattern;
+    public int numPosition;
 
     public string text 
     {
@@ -28,6 +29,7 @@ public class ItemSeatPattern : MonoBehaviour
         pattern = "";
         txtName.text = "< Пусто >";
         btnPanel.SetActive(false);
+        MyDataBase.RemovePattern(numPosition);
     }
 
     public void UpLoad()

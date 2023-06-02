@@ -100,9 +100,25 @@ static class MyDataBase
         CloseConnection();
     }
 
+    private static void CreateTablePattern()
+    {
+        string query = "CREATE TABLE IF NOT EXISTS \"pattern\" ( " +
+                            "\"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                            "\"numPosition\" integer, " +
+                            "\"name\" TEXT, " +
+                            "\"listDices\" TEXT " +
+                        ");";
+
+        OpenConnection();
+        command.CommandText = query;
+        command.ExecuteNonQuery();
+        CloseConnection();
+    }
+
     public static void CreateTables()
     {
         CreateTableHistory();
+        CreateTablePattern();
     }
 
     /// <summary> Этот метод выполняет запрос query. </summary>
@@ -186,10 +202,36 @@ static class MyDataBase
         CloseConnection();
     }
 
-    public static void InsertResult(string sreRes)
+    public static void InsertResult(string strRes)
     {
         OpenConnection();
-        command.CommandText = $"INSERT INTO \"history\" (\"date\", \"result\") VALUES ('{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}', '{sreRes}')";
+        command.CommandText = $"INSERT INTO \"history\" (\"date\", \"result\") VALUES ('{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}', '{strRes}')";
+        command.ExecuteNonQuery();
+        CloseConnection();
+    }
+
+    public static void InsertPattern(int numPosition, string name, string strPattern)
+    {
+        string query = "";
+        if (int.Parse(GetStrQuery($"SELECT COUNT(*) FROM \"pattern\" WHERE numPosition = {numPosition}")) > 0)
+        {
+            query = $"UPDATE \"pattern\" SET \"name\" = '{name}', \"listDices\" = '{strPattern}' WHERE numPosition = {numPosition}";
+        }
+        else
+        {
+            query = $"INSERT INTO \"pattern\" (\"numPosition\", \"name\", \"listDices\") VALUES ({numPosition}, '{name}', '{strPattern}')";
+        }
+
+        OpenConnection();
+        command.CommandText = query;
+        command.ExecuteNonQuery();
+        CloseConnection();
+    }
+
+    public static void RemovePattern(int numPosition)
+    {
+        OpenConnection();
+        command.CommandText = $"DELETE FROM \"pattern\" WHERE numPosition = {numPosition}";
         command.ExecuteNonQuery();
         CloseConnection();
     }
