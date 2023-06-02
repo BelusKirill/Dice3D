@@ -1,3 +1,4 @@
+using System.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,9 +18,21 @@ public class Patterns : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DataTable dbPattern = MyDataBase.GetTable("SELECT * FROM \"pattern\"");
+
         controlDice = controllerDice.GetComponent<ControllerDice>();
         foreach(Transform child in ContentPatten.transform)
         {
+            foreach (DataRow row in dbPattern.Rows)
+            {
+                ItemSeatPattern itemSeatPattern = child.GetComponent<ItemSeatPattern>();
+                if (itemSeatPattern.numPosition == int.Parse(row.ItemArray[1].ToString()))
+                {
+                    itemSeatPattern.pattern = row.ItemArray[3].ToString();
+                    itemSeatPattern.text = row.ItemArray[2].ToString();
+                }
+            }
+
             listPattern.Add(child);
         }
     }
