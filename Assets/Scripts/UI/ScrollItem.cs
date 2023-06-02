@@ -44,6 +44,19 @@ public class ScrollItem : MonoBehaviour
         }
     }
 
+    public void UpdateCountDices()
+    {
+        countDices = 0;
+        foreach(Dice dice in controllerDice.GetComponent<ControllerDice>().dices)
+        {
+            if (diceType == dice.type)
+            {
+                countDices++;
+            }
+        }
+        txtCountDices.text = countDices.ToString();
+    }
+
     public void ClearDices()
     {
         countDices = 0;
