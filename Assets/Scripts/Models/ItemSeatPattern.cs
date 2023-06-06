@@ -5,6 +5,7 @@ using TMPro;
 
 public class ItemSeatPattern : MonoBehaviour
 {
+    public GameObject dellPatternItem;
     public TextMeshProUGUI txtName;
     public GameObject btnPanel;
     public string pattern;
@@ -30,6 +31,7 @@ public class ItemSeatPattern : MonoBehaviour
         txtName.text = "< Пусто >";
         btnPanel.SetActive(false);
         MyDataBase.RemovePattern(numPosition);
+        dellPatternItem.GetComponent<DellPatternItem>().ShowMessage(this);
     }
 
     public void UpLoad()

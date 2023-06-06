@@ -28,7 +28,6 @@ public class DoubleTabExit : MonoBehaviour
 
     void ShowMessage()
     {
-        Debug.Log("ShowMessage");
         backPressedOnce = true;
         exitCanvas.SetActive(true);
 
@@ -40,7 +39,6 @@ public class DoubleTabExit : MonoBehaviour
 
     void HideMessage()
     {
-        Debug.Log("HideMessage");
         LeanTween.moveY(exitPanel.GetComponent<RectTransform>(), -300, 0.1f).setDelay(0.1f);
         backPressedOnce = false;
         Invoke("HideCanvas", 0.5f);

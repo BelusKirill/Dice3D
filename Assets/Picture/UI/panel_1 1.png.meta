@@ -132,7 +132,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 586
+        y: 587
         width: 720
         height: 133
       alignment: 0
@@ -153,12 +153,12 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 438
         width: 720
-        height: 192
+        height: 134
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 90, z: 0, w: 94}
+      border: {x: 88, y: 56, z: 88, w: 56}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -174,18 +174,39 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 438
+        y: 291
         width: 720
         height: 133
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 88, y: 56, z: 88, w: 56}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 350, y: 20, z: 350, w: 20}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: f51eb62bc16f5464ab44644fb9a5a8da
       internalID: 1505050366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panel_1 1_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 720
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 90, z: 0, w: 94}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65c5f8cffd7886b45a681d10a9fb8753
+      internalID: -1081394414
       vertices: []
       indices: 
       edges: []
@@ -201,6 +222,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      panel_1 1_3: -1081394414
+      panel_1 1_4: -1472397913
+      panel_1 1_5: -1620082142
       panel_1 1_2: 1505050366
       panel_1 1_0: 2075252963
       panel_1 1_1: -1970098351
