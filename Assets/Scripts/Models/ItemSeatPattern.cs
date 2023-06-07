@@ -6,6 +6,7 @@ using TMPro;
 public class ItemSeatPattern : MonoBehaviour
 {
     public GameObject dellPatternItem;
+    public GameObject panelPattern;
     public TextMeshProUGUI txtName;
     public GameObject btnPanel;
     public string pattern;
@@ -28,6 +29,7 @@ public class ItemSeatPattern : MonoBehaviour
     public void btnDell()
     {
         dellPatternItem.GetComponent<DellPatternItem>().ShowMessage(this);
+        panelPattern.GetComponent<Patterns>().UpdateBtns();
     }
 
     public void Remove()

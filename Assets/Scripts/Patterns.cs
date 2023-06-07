@@ -13,6 +13,13 @@ public class Patterns : MonoBehaviour
     public TMP_InputField txtInputNamePattern;
     public GameObject controllerDice;
 
+    [Header("ToggleGroupPattern")]
+    public GameObject tgp;
+
+    [Header("Buttons")]
+    public GameObject btnSave;
+    public GameObject btnUpload;
+
     private ControllerDice controlDice;
 
     // Start is called before the first frame update
@@ -35,6 +42,9 @@ public class Patterns : MonoBehaviour
 
             listPattern.Add(child);
         }
+
+        LeanTween.scaleX(btnUpload, 0, 0.1f).setDelay(0.1f);
+        LeanTween.moveX(btnSave.GetComponent<RectTransform>(), -60, 0.1f).setDelay(0.1f);
     }
 
     public void BtnSave()
@@ -71,6 +81,8 @@ public class Patterns : MonoBehaviour
             itemSeatPattern.pattern = msg;
             MyDataBase.InsertPattern(numActivItem, itemSeatPattern.text, itemSeatPattern.pattern);
         }
+
+        UpdateBtns();
     }
 
     public void Upload()
@@ -108,6 +120,26 @@ public class Patterns : MonoBehaviour
                     
                     controlDice.AddDice(newDice);
                 }
+            }
+        }
+    }
+
+    public void UpdateBtns()
+    {
+        GameObject itemPattern = tgp.GetComponent<ToggleGroup>().GetGOToggleIsON();
+        if (itemPattern != null && itemPattern.GetComponent<Toggle>().isOn)
+        {
+            if (itemPattern.GetComponent<ItemSeatPattern>().pattern.Length > 1)
+            {
+                btnUpload.SetActive(true);
+                LeanTween.scaleX(btnUpload, 1, 0.1f).setDelay(0.1f);
+                LeanTween.moveX(btnSave.GetComponent<RectTransform>(), 0, 0.1f).setDelay(0.1f);
+            }
+            else
+            {
+                btnUpload.SetActive(false);
+                LeanTween.scaleX(btnUpload, 0, 0.1f).setDelay(0.1f);
+                LeanTween.moveX(btnSave.GetComponent<RectTransform>(), -60, 0.1f).setDelay(0.1f);
             }
         }
     }

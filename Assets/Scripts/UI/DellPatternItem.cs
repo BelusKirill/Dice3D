@@ -12,6 +12,9 @@ public class DellPatternItem : MonoBehaviour
     [SerializeField] Image ImageTimer;
     [SerializeField] TextMeshProUGUI txtTime;
 
+    [Header("PatternPanel")]
+    public GameObject patternPanel;
+
     ItemSeatPattern actualSeat;
     string actualText;
     string actualTxtPattern;
@@ -42,7 +45,6 @@ public class DellPatternItem : MonoBehaviour
             HideCanvas();
         }
 
-        Debug.Log("ShowMessage");
         updateActualSeat(_actualSeat);
         backPressedOnce = true;
         delPatternCanvas.SetActive(true);
@@ -67,7 +69,6 @@ public class DellPatternItem : MonoBehaviour
 
     void HideCanvas()
     {
-        Debug.Log("HideMessage");
         delPatternCanvas.SetActive(false);
         backPressedOnce = false;
     }
@@ -99,5 +100,6 @@ public class DellPatternItem : MonoBehaviour
         actualSeat.text = actualText;
         actualSeat.pattern = actualTxtPattern;
         HideMessage(removeDB: false);
+        patternPanel.GetComponent<Patterns>().UpdateBtns();
     }
 }

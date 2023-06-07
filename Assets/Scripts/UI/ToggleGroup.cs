@@ -7,6 +7,17 @@ public class ToggleGroup : MonoBehaviour
 {
     public Toggle[] toggles;
 
+    public GameObject GetGOToggleIsON()
+    {
+        foreach (Toggle toggle in toggles)
+        {
+            if (toggle.isOn)
+                return toggle.gameObject;
+        }
+
+        return null;
+    }
+
     public int GetIdToggleIsON()
     {
         int res = 0;
