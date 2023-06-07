@@ -27,11 +27,19 @@ public class ItemSeatPattern : MonoBehaviour
 
     public void btnDell()
     {
+        dellPatternItem.GetComponent<DellPatternItem>().ShowMessage(this);
+    }
+
+    public void Remove()
+    {
         pattern = "";
         txtName.text = "< Пусто >";
         btnPanel.SetActive(false);
+    }
+
+    public void RemoveDB()
+    {
         MyDataBase.RemovePattern(numPosition);
-        dellPatternItem.GetComponent<DellPatternItem>().ShowMessage(this);
     }
 
     public void UpLoad()

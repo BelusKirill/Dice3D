@@ -13,6 +13,8 @@ public class DellPatternItem : MonoBehaviour
     [SerializeField] TextMeshProUGUI txtTime;
 
     ItemSeatPattern actualSeat;
+    string actualText;
+    string actualTxtPattern;
     bool backPressedOnce;
     IEnumerator coroutine;
 
@@ -21,13 +23,27 @@ public class DellPatternItem : MonoBehaviour
         delPatternCanvas.SetActive(false);
         backPressedOnce = false;
         LeanTween.moveY(delPatternPanel.GetComponent<RectTransform>(), -350, 0.1f).setDelay(0.1f);
-        
+        actualSeat = null;
+    }
+
+    public void updateActualSeat(ItemSeatPattern _actualSeat)
+    {
+        actualSeat = _actualSeat;
+        actualText = _actualSeat.text;
+        actualTxtPattern = _actualSeat.pattern;
+        _actualSeat.Remove();
     }
 
     public void ShowMessage(ItemSeatPattern _actualSeat)
     {
+        if (backPressedOnce)
+        {
+            HideMessage(false);
+            HideCanvas();
+        }
+
         Debug.Log("ShowMessage");
-        actualSeat = _actualSeat;
+        updateActualSeat(_actualSeat);
         backPressedOnce = true;
         delPatternCanvas.SetActive(true);
 
@@ -39,17 +55,21 @@ public class DellPatternItem : MonoBehaviour
         StartCoroutine(coroutine);
     }
 
-    void HideMessage()
+    void HideMessage(bool hide = true, bool removeDB = true)
     {
         LeanTween.moveY(delPatternPanel.GetComponent<RectTransform>(), -350, 0.1f).setDelay(0.1f);
-        backPressedOnce = false;
-        Invoke("HideCanvas", 0.5f);
+        if (hide)
+            Invoke("HideCanvas", 0.5f);
+        if (removeDB)
+            actualSeat.RemoveDB();
         StopCoroutine(coroutine);
     }
 
     void HideCanvas()
     {
+        Debug.Log("HideMessage");
         delPatternCanvas.SetActive(false);
+        backPressedOnce = false;
     }
 
     IEnumerator WaitCountdown()
@@ -63,16 +83,21 @@ public class DellPatternItem : MonoBehaviour
             {
                 Application.Quit();
             }
-            else if (Input.touchCount > 0)
-            {
-                HideMessage();
-            }
 
             tempTime += Time.deltaTime;
-            ImageTimer.fillAmount = 1 - (tempTime * (waitTime / 10));
+            ImageTimer.fillAmount = 1 - (tempTime / waitTime);
             txtTime.text = ((int)(waitTime - tempTime + 0.5)).ToString();
             yield return null;
         }
         HideMessage();
+    }
+
+    public void BtnPressCansel()
+    {
+        if (actualSeat == null) return;
+
+        actualSeat.text = actualText;
+        actualSeat.pattern = actualTxtPattern;
+        HideMessage(removeDB: false);
     }
 }
