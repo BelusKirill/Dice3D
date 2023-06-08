@@ -791,7 +791,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84e1bc33e75a9642a0fa5435a223e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dellPatternItem: {fileID: 0}
+  panelPattern: {fileID: 0}
   txtName: {fileID: 8967732179966820938}
   btnPanel: {fileID: 5795545388719549714}
+  selectedImage: {fileID: 8967732179748762496}
   pattern: 
   numPosition: 0

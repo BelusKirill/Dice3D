@@ -12,6 +12,7 @@ public class Patterns : MonoBehaviour
     public TextMeshProUGUI txtNamePattern;
     public TMP_InputField txtInputNamePattern;
     public GameObject controllerDice;
+    public Alert alert;
 
     [Header("ToggleGroupPattern")]
     public GameObject tgp;
@@ -50,7 +51,11 @@ public class Patterns : MonoBehaviour
     public void BtnSave()
     {
         if (txtNamePattern.text.Trim().Length < 2)
+        {
+            alert.SetText("Не указано название");
+            alert.ShowMessage();
             return; 
+        }
 
         Transform activItem = null;
         int numActivItem = 0;
@@ -75,11 +80,21 @@ public class Patterns : MonoBehaviour
                 msg += $"{dice.type}|{dice.typeTheam} ";
             }
 
-            if (msg.Length < 2) return;
+            if (msg.Length < 2)
+            {
+                alert.SetText("Поле с кубиками пустое, нечего сохранять");
+                alert.ShowMessage();
+                return;
+            }
 
             itemSeatPattern.text = txtNamePattern.text;
             itemSeatPattern.pattern = msg;
             MyDataBase.InsertPattern(numActivItem, itemSeatPattern.text, itemSeatPattern.pattern);
+        }
+        else
+        {
+            alert.SetText("Не выбрана ячейка для сохранения");
+            alert.ShowMessage();
         }
 
         UpdateBtns();

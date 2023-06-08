@@ -80,11 +80,6 @@ public class DellPatternItem : MonoBehaviour
         var tempTime = 0f;
         while(tempTime <= waitTime)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Application.Quit();
-            }
-
             tempTime += Time.deltaTime;
             ImageTimer.fillAmount = 1 - (tempTime / waitTime);
             txtTime.text = ((int)(waitTime - tempTime + 0.5)).ToString();
